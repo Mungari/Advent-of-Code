@@ -1,13 +1,22 @@
 import math
 
+def fuelRecurs(fuel):
+    f = (int(fuel)//3)-2
+    if(f <= 0):
+        pass
+    else:
+        fuelList.append(f)
+        fuelRecurs(f)
+
 bigList = []
-myfile = open('dataSet.txt', mode='r').readlines()
-for line in myfile:
-    bigList.append(math.floor(int(line)//3)-2)
+with open('dataSet.txt', mode='r') as myfile:
+    for line in myfile.readlines():
+        bigList.append(int(line)//3-2)
 
-numT = 0
-for num in bigList:
-    numT = numT + num
+fuelList = []
+for fuel in bigList:
+    fuelList.append(fuel)
+    fuelRecurs(fuel)
 
-print(numT)
+print(sum(fuelList))
 input() 
